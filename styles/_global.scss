@@ -12,19 +12,19 @@ body {
   background-size: cover;
 }
 
-body > div {
-  padding: 52px 85px 52px 90px;
-  max-width: 1920px;
-  margin: 0 auto;
-}
+// body > div {
+//   padding: 52px 85px 52px 90px;
+//   max-width: 1920px;
+//   margin: 0 auto;
+// }
 
 .app__box {
-  margin: 0 0 40px;
+  // margin: 0 0 40px;
   @include lg {
-    margin: 0 0 20px;
+    // margin: 0 0 20px;
   }
   @include sm {
-    margin: 0 0 10px;
+    // margin: 0 0 10px;
   }
 }
 
@@ -58,6 +58,12 @@ body > div {
   }
 }
 
+#swquiz-app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
 @include lg {
   body > div {
     padding: 25px 20px 25px 20px;
@@ -77,7 +83,7 @@ body > div {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 2;
+      font-size: $font-size-secondary / 1.75;
     }
   }
 }
@@ -85,5 +91,14 @@ body > div {
 @include sm {
   body > div {
     padding: 15px 10px 15px 10px;
+  }
+  #swquiz-app {
+    padding: 0 16px;
+  }
+  .text {
+    &__md,
+    &__lg {
+      font-size: $font-size-secondary / 2;
+    }
   }
 }
