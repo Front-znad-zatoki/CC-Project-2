@@ -47,8 +47,8 @@
 
 .rules {
   @extend .mode__container--active;
-  height: 100%;
-  margin: 48px 0;
+  // height: 100%;
+  // margin: 48px 0;
 
   &-header {
     @extend .text__lg--centered;
@@ -197,6 +197,7 @@
     font-weight: 500;
     &-icon {
       margin-right: 2rem;
+      height: 2rem;
     }
   }
 
@@ -220,8 +221,10 @@
 
 @include xlg {
   .section {
-    grid-template-columns: 400px 1fr;
-    display: none;
+    grid-template-columns: 360px 1fr;
+  }
+  .mode-info__heading {
+    padding: 16px;
   }
 }
 @include lg {

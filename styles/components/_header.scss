@@ -59,10 +59,10 @@
 
 @include xlg {
   .header {
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 360px 1fr;
   }
   .menu {
-    height: 140px;
+    height: 100px;
     &__button {
       &--select {
         &::after {
