@@ -1,6 +1,6 @@
 .section {
   display: grid;
-  grid-template-columns: 465px 1fr;
+  grid-template-columns: 400px 1fr;
   column-gap: 48px;
   height: 100%;
   margin-bottom: 48px;
@@ -8,6 +8,7 @@
     max-width: 1200px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     &__buttons {
       display: flex;
       justify-content: space-between;
@@ -20,9 +21,14 @@
 }
 
 .visual-box {
+  height: 100%;
+  padding: 0 32px 0 28px;
   &__image {
     @extend .app__box;
     width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: top;
     border-radius: 16px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
       drop-shadow(4px 4px 40px rgba(255, 0, 0, 0.9));
@@ -49,7 +55,7 @@
   @extend .mode__container--active;
   // height: 100%;
   // margin: 48px 0;
-
+  // display: none;
   &-header {
     @extend .text__lg--centered;
     font-weight: 500;
@@ -94,7 +100,7 @@
   // Display & Box Model
   border-radius: $border-radius;
   border: 0;
-  padding: 1rem;
+  // padding: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   max-width: 400px;
   height: 2em;
