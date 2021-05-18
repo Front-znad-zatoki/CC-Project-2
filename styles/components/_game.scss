@@ -10,8 +10,9 @@
     flex-direction: column;
     justify-content: space-between;
     &__buttons {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 48px;
       margin-top: auto;
       & .button {
         box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
@@ -102,7 +103,7 @@
   border: 0;
   // padding: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  max-width: 400px;
+  // max-width: 400px;
   height: 2em;
 
   // Color
@@ -237,8 +238,14 @@
   .section {
     // flex-wrap: wrap;
     grid-template-columns: 320px 1fr;
+    column-gap: 16px;
     &__wrapper {
-      // flex-basis: 70%;
+      & > div {
+        border-radius: 8px;
+      }
+      &__buttons > button {
+        border-radius: 8px;
+      }
     }
   }
 
@@ -249,11 +256,15 @@
     // margin: auto 0;
 
     &__image {
+      border-radius: 8px;
       // min-width: unset;
       // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
       //   drop-shadow(4px 4px 20px rgba(255, 0, 0, 0.9));
     }
   }
+  // .mode-info {
+  //   border-radius: 8px;
+  // }
   .section__wrapper__buttons > .button {
     // height: auto;
     &:first-child {
@@ -263,15 +274,19 @@
 }
 @include md {
   .section {
+    column-gap: 0;
+    grid-template-columns: 260px 1fr;
     &__wrapper {
-      // flex-basis: unset;
+      &__buttons {
+        column-gap: 32px;
+      }
     }
   }
 
   .visual-box {
     // flex-basis: unset;
     // margin: 0 auto;
-    // padding: 0;
+    padding-left: 0;
     &__image {
       // max-height: 313px;
     }

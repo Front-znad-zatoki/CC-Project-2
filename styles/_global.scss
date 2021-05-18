@@ -32,7 +32,7 @@ body {
   @extend .app__box;
   overflow: auto;
   // max-height: 350px;
-  height: 100%;
+  // height: 100%;
   margin: 48px 0;
   padding: 0 48px 20px;
   border-radius: $border-radius;
@@ -73,7 +73,7 @@ body {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 1.25;
+      // font-size: $font-size-secondary / 1.125;
     }
   }
   .mode__container--active {
@@ -88,20 +88,20 @@ body {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 1.5;
+      font-size: $font-size-secondary / 1.125;
     }
   }
 
   .mode__container--active {
-    height: 100%;
-    padding: 0 32px;
+    // height: 100%;
+    padding: 0 32px 16px;
   }
 }
 @include md {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 1.75;
+      font-size: $font-size-secondary / 1.25;
     }
   }
 }
@@ -116,7 +116,7 @@ body {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 2;
+      // font-size: $font-size-secondary / 2;
     }
   }
 }
