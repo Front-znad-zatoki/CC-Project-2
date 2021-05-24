@@ -44,7 +44,7 @@
   border-radius: $border-radius;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     4px 4px 40px rgba(255, 0, 0, 0.9);
-
+    margin-bottom: 32px;
   &__heading {
     @extend .text__lg--centered;
     margin: 0;
@@ -79,32 +79,31 @@
 }
 
 .answers {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.answer__text {
-  position: relative;
-  top: 50%;
-  transform: translate(0, -50%);
-  margin: 0;
-  padding: 0;
-  text-align: center;
+  display: grid;
+  column-gap: 32px;
+  row-gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: auto;
+  &__text {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
 }
 
 .button {
   @extend .text__lg--centered;
   // Positioning
   position: relative;
-  flex-grow: 1;
 
   // Display & Box Model
   border-radius: $border-radius;
   border: 0;
-  // padding: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  // max-width: 400px;
-  height: 2em;
+  height: 86px;
 
   // Color
   background-color: $color-primary;
@@ -113,6 +112,12 @@
   // Other
   text-align: center;
   cursor: pointer;
+  &:disabled {
+    &:hover {
+      font-weight: unset;
+      box-shadow: none;
+    }
+  }
   &__app {
     @extend .button;
     &--start {
@@ -122,13 +127,8 @@
   }
 
   &__answer {
-    // margin: 1rem;
-    // height: 2.5em;
-    // justify-content: space-between;
     font-weight: 400;
     background-color: $color-primary;
-    // flex-grow: 1;
-    // flex-basis: 40%;
     &--success {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 30px #51fc00;
@@ -248,7 +248,8 @@
       & > div {
         border-radius: 8px;
       }
-      &__buttons > button, .button__answer {
+      &__buttons > button,
+      .button__answer {
         border-radius: 8px;
       }
     }
@@ -345,7 +346,8 @@
   .section {
     &__wrapper {
       & > div,
-      button, .button__answer {
+      button,
+      .button__answer {
         border-radius: 4px;
       }
 

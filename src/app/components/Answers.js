@@ -5,30 +5,32 @@ import validateString from '../utils/validateString';
 const createAnswerElement = (
   answerText,
   isCorrect,
-  answersElement,
   humanPlayer,
   callback,
 ) => {
-  const answer = elementFactory('p', { className: 'answer__text' });
-  answer.innerText = answerText;
-  const answerElement = elementFactory('div', {
-    className: 'button button__answer',
-  });
+  const answerElement = elementFactory(
+    'button',
+    {
+      className: 'button button__answer',
+    },
+    answerText,
+  );
   answerElement.addEventListener('click', () => {
-    if (answersElement.hasAttribute('disabled')) {
-      return;
-    }
     answerElement.classList.add(
       `button__answer--${isCorrect ? 'success' : 'fail'}`,
     );
+    const buttonsToDisable = document.querySelectorAll(
+      '.button__answer',
+    );
 
-    answersElement.setAttribute('disabled', true);
+    buttonsToDisable.forEach((button) => {
+      button.setAttribute('disabled', true);
+    });
     setTimeout(
       () => humanPlayer.getAnswer(answerText, isCorrect, callback),
-      1000,
+      500,
     );
   });
-  answerElement.appendChild(answer);
   return answerElement;
 };
 

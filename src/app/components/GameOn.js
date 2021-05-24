@@ -1,21 +1,14 @@
 import Answers from './Answers';
 import RemainingTime from './RemainingTime';
 import GameModeName from './GameModeName';
-import elementFactory from '../utils/elementFactory';
 import render from '../utils/render';
 import ModalWindow from './Modal/ModalWindow';
 
 const handleGame = (chosenMode, callback) => {
   const section = document.querySelector('.section');
   const sectionWrapper = document.querySelector('.section__wrapper');
-  const answersWrapper = elementFactory('div', {
-    className: 'answers-wrapper',
-  });
-
   sectionWrapper.innerHTML = '';
   sectionWrapper.appendChild(GameModeName(chosenMode));
-  sectionWrapper.appendChild(answersWrapper);
-
   section.appendChild(RemainingTime(callback));
 };
 
@@ -25,9 +18,10 @@ const displayAnswers = (
   humanPlayer,
   callback,
 ) => {
-  const answersWrapper = document.querySelector('.answers-wrapper');
-  answersWrapper.innerHTML = '';
-  answersWrapper.appendChild(
+  const answersWrapper = document.querySelector('.answers');
+  const sectionWrapper = document.querySelector('.section__wrapper');
+  if (answersWrapper) answersWrapper.remove();
+  sectionWrapper.appendChild(
     Answers(answers, correctAnswer, humanPlayer, callback),
   );
 };
