@@ -127,7 +127,6 @@ body {
     margin: 16px 0;
     padding: 0 16px 16px;
   }
-
 }
 
 @include xsm {
@@ -142,5 +141,9 @@ body {
     &__lg {
       font-size: $font-size-primary / 2;
     }
+  }
+  #swquiz-app {
+    min-height: 100vh;
+    height: unset;
   }
 }
