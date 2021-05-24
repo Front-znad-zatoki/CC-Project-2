@@ -31,12 +31,13 @@ body {
 .mode__container--active {
   @extend .app__box;
   overflow: auto;
-  max-height: 350px;
-  height: 100%;
-  padding: 1.25rem;
+  // max-height: 350px;
+  // height: 100%;
+  margin: 48px 0;
+  padding: 0 48px 20px;
   border-radius: $border-radius;
   background-color: $color-primary;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
 }
 
 .mode-info__heading {
@@ -46,7 +47,7 @@ body {
 .text__md {
   font-size: $font-size-secondary;
   font-weight: 500;
-  line-height: 123%;
+  line-height: 133%;
 }
 .text__lg {
   font-size: $font-size-primary;
@@ -59,11 +60,27 @@ body {
 }
 
 #swquiz-app {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  height: 100vh;
 }
 
+@include xlg {
+  .text {
+    &__md,
+    &__lg {
+      // font-size: $font-size-secondary / 1.125;
+    }
+  }
+  .mode__container--active {
+    padding: 0 32px 32px;
+    margin: 32px 0;
+  }
+}
 @include lg {
   body > div {
     padding: 25px 20px 25px 20px;
@@ -71,20 +88,25 @@ body {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 1.5;
+      font-size: $font-size-secondary / 1.125;
     }
   }
 
   .mode__container--active {
-    height: auto;
+    // height: 100%;
+    padding: 0 32px 16px;
   }
 }
 @include md {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 1.75;
+      font-size: $font-size-secondary / 1.375;
     }
+  }
+  .mode__container--active {
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 25%),
+      2px 2px 20px rgb(255 0 0 / 90%);
   }
 }
 
@@ -98,7 +120,30 @@ body {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 2;
+      font-size: $font-size-secondary / 1.5;
     }
+  }
+  .mode__container--active {
+    margin: 16px 0;
+    padding: 0 16px 16px;
+  }
+}
+
+@include xsm {
+  // body > div {
+  //   padding: 15px 10px 15px 10px;
+  // }
+  // #swquiz-app {
+  //   padding: 0 16px;
+  // }
+  .text {
+    &__md,
+    &__lg {
+      font-size: $font-size-primary / 2;
+    }
+  }
+  #swquiz-app {
+    min-height: 100vh;
+    height: unset;
   }
 }

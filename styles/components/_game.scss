@@ -1,31 +1,35 @@
 .section {
   display: grid;
-  grid-template-columns: 465px 1fr;
+  grid-template-columns: 400px 1fr;
   column-gap: 48px;
+  height: 100%;
+  margin-bottom: 48px;
   &__wrapper {
     max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     &__buttons {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 48px;
+      margin-top: auto;
+      & .button {
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
+      }
     }
   }
 }
 
 .visual-box {
-  // display: block;
-  // margin: auto 0;
-  // max-width: calc(505px - 40px);
-  // padding: 0 50px 0 0;
+  height: 100%;
+  padding: 0 32px 0 28px;
   &__image {
     @extend .app__box;
-    // display: inline-block;
-    // max-width: 100%;
-    // min-width: 411px;
-    // max-height: 554px;
-    // remove following prop if necessary
-    // object-fit: fill;
-
     width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: top;
     border-radius: 16px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
       drop-shadow(4px 4px 40px rgba(255, 0, 0, 0.9));
@@ -39,8 +43,7 @@
   text-align: center;
   border-radius: $border-radius;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-    4px 4px 40px rgba(255, 0, 0, 0.9),
-    inset 4px 5px 4px rgba(0, 0, 0, 0.5);
+    4px 4px 40px rgba(255, 0, 0, 0.9);
 
   &__heading {
     @extend .text__lg--centered;
@@ -51,11 +54,21 @@
 
 .rules {
   @extend .mode__container--active;
-  padding: 20px 45px;
+  // height: 100%;
+  // margin: 48px 0;
+  // display: none;
   &-header {
     @extend .text__lg--centered;
     font-weight: 500;
-    margin: 0 0 15px;
+    margin: 0 0 24px;
+    display: flex;
+    justify-content: center;
+    padding: 1.25rem;
+    margin: 0;
+    font-weight: 500;
+    &-icon {
+      margin-right: 2rem;
+    }
   }
   &-icon {
     margin-right: 1rem;
@@ -88,9 +101,9 @@
   // Display & Box Model
   border-radius: $border-radius;
   border: 0;
-  padding: 1rem;
+  // padding: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  max-width: 575px;
+  // max-width: 400px;
   height: 2em;
 
   // Color
@@ -186,27 +199,32 @@
     @extend .text__lg--centered;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 1.25rem;
     margin: 0;
     font-weight: 500;
     &-icon {
       margin-right: 2rem;
+      height: 2rem;
     }
   }
 
   &__table {
     display: grid;
-    padding-bottom: 3rem;
-    margin: 0 3rem;
     grid-template-columns: 1fr 7fr 2fr;
 
     &-cell {
       @extend .text__md;
-      padding: 0 1.25rem;
-      margin: 0.5rem 0;
+      // padding: 0 1.25rem;
+      margin: 0;
+      text-align: center;
+      &:nth-of-type(3n + 1) {
+        text-align: left;
+      }
 
       &--bold {
         font-weight: 600;
+        text-decoration: underline;
       }
     }
   }
@@ -214,16 +232,24 @@
 
 @include xlg {
   .section {
-    grid-template-columns: 400px 1fr;
-    display: none;
+    grid-template-columns: 360px 1fr;
+  }
+  .mode-info__heading {
+    padding: 16px;
   }
 }
 @include lg {
   .section {
     // flex-wrap: wrap;
     grid-template-columns: 320px 1fr;
+    column-gap: 16px;
     &__wrapper {
-      // flex-basis: 70%;
+      & > div {
+        border-radius: 8px;
+      }
+      &__buttons > button {
+        border-radius: 8px;
+      }
     }
   }
 
@@ -234,11 +260,15 @@
     // margin: auto 0;
 
     &__image {
+      border-radius: 8px;
       // min-width: unset;
       // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
       //   drop-shadow(4px 4px 20px rgba(255, 0, 0, 0.9));
     }
   }
+  // .mode-info {
+  //   border-radius: 8px;
+  // }
   .section__wrapper__buttons > .button {
     // height: auto;
     &:first-child {
@@ -248,17 +278,141 @@
 }
 @include md {
   .section {
+    column-gap: 0;
+    grid-template-columns: 260px 1fr;
+    margin-bottom: 32px;
     &__wrapper {
-      // flex-basis: unset;
+      &__buttons {
+        column-gap: 32px;
+      }
     }
   }
 
   .visual-box {
     // flex-basis: unset;
     // margin: 0 auto;
-    // padding: 0;
+    padding-left: 0;
+    max-height: calc(100% - 32px);
     &__image {
-      // max-height: 313px;
+      box-shadow: 0px 2px 2px rgb(0 0 0 / 25%),
+        2px 2px 20px rgb(255 0 0 / 90%);
+      filter: unset;
     }
+  }
+  .mode-info {
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 25%),
+      2px 2px 20px rgb(255 0 0 / 90%);
+  }
+  .section__wrapper__buttons .button {
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 25%),
+      2px 2px 20px rgb(255 0 0 / 90%);
+  }
+}
+
+@include sm {
+  .rules-header,
+  .scores__header {
+    padding: 16px 0 8px;
+  }
+  .scores__header {
+    &-icon {
+      height: 1.25rem;
+      margin-right: 16px;
+    }
+  }
+  .mode-info__heading {
+    padding: 12px;
+  }
+  .section {
+    grid-template-columns: 32% 1fr;
+    margin-bottom: 16px;
+    &__wrapper__buttons {
+      column-gap: 16px;
+    }
+  }
+  .visual-box {
+    padding-right: 16px;
+  }
+}
+
+@include xsm {
+  .button {
+    // flex-basis: 100%;
+    &--red {
+    }
+  }
+  .section {
+    &__wrapper {
+      & > div,
+      button {
+        border-radius: 4px;
+      }
+
+      &__buttons {
+        display: flex;
+        flex-direction: column;
+        & > button:nth-child(2) {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+  .visual-box__image {
+    border-radius: 4px;
+  }
+}
+
+@include xsm-v {
+  .section {
+    display: flex;
+    flex-direction: column;
+    &__wrapper {
+      &__buttons {
+        & button:first-child {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+  .visual-box {
+    padding-right: 0;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    &__image {
+      max-height: 100%;
+      width: auto;
+      max-width: 75%;
+      display: block;
+    }
+  }
+  .button__icon {
+    // left: 36%;
+    padding-right: 16px;
+    transform: unset;
+    position: unset;
+  }
+  .mode {
+    &-info {
+      & :not(:first-child) {
+        font-weight: 500;
+        // line-height: 2;
+      }
+      &__question {
+        display: block;
+        padding-top: 4px;
+      }
+    }
+    &__container--active {
+      min-height: 10rem;
+    }
+  }
+}
+
+@include xxsm-v {
+  .mode__container--active {
+    min-height: 11rem;
   }
 }

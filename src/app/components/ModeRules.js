@@ -2,15 +2,15 @@ import elementFactory from '../utils/elementFactory';
 import { PEOPLE, VEHICLES, STARSHIPS } from '../constants';
 
 const repeatableText =
-  'You have two minutes (2m) to answer as many questions as possible. During the game on each question you need to select';
+  'You have 2 minutes to answer as many questions as you can. During the game you should select';
 
 const rulesTexts = {
   [PEOPLE]:
-    'who from Star Wars is showed on the left (Jar Jar Binks right now) from available options.',
+    'what Star Wars character do you see on the picture (e.g. Jar Jar Binks).',
   [VEHICLES]:
-    'which vehicle from Star Wars is showed on the left (Sith Speeder right now).',
+    'which Star Wars vehicle do you see on the picture (e.g. Sith Speeder).',
   [STARSHIPS]:
-    'which starship from Star Wars is showed on the left (TIE Advanced x1 right now).',
+    'which Star Wars starship do you see on the picture (e.g. TIE Advanced x1).',
 };
 
 const ModeRules = (mode) => {
