@@ -199,6 +199,7 @@
     @extend .text__lg--centered;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 1.25rem;
     margin: 0;
     font-weight: 500;
@@ -214,11 +215,16 @@
 
     &-cell {
       @extend .text__md;
-      padding: 0 1.25rem;
-      margin: 0.25rem 0;
+      // padding: 0 1.25rem;
+      margin: 0;
+      text-align: center;
+      &:nth-of-type(3n+1) {
+        text-align: left;
+      }
 
       &--bold {
         font-weight: 600;
+        text-decoration: underline;
       }
     }
   }
@@ -274,6 +280,7 @@
   .section {
     column-gap: 0;
     grid-template-columns: 260px 1fr;
+    margin-bottom: 32px;
     &__wrapper {
       &__buttons {
         column-gap: 32px;
@@ -298,5 +305,30 @@
   .section__wrapper__buttons .button {
     box-shadow: 0px 2px 2px rgb(0 0 0 / 25%),
       2px 2px 20px rgb(255 0 0 / 90%);
+  }
+}
+
+@include sm {
+  .rules-header, .scores__header {
+    padding: 16px 0;
+  }
+  .scores__header {
+    &-icon {
+      height: 1.25rem;
+      margin-right: 16px;
+    }
+  }
+  .mode-info__heading {
+    padding: 12px;
+  }
+  .section {
+    grid-template-columns: 220px 1fr;
+    margin-bottom: 16px;
+    &__wrapper__buttons {
+      column-gap: 16px;
+    }
+  }
+  .visual-box {
+    padding-right: 16px;
   }
 }

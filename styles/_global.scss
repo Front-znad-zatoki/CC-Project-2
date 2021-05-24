@@ -120,9 +120,14 @@ body {
   .text {
     &__md,
     &__lg {
-      font-size: $font-size-secondary / 1.75;
+      font-size: $font-size-secondary / 1.5;
     }
   }
+  .mode__container--active {
+    margin: 16px 0;
+    padding: 0 16px 16px;
+  }
+
 }
 
 @include xsm {
