@@ -341,20 +341,78 @@
     &--red {
     }
   }
-  .section__wrapper {
-    & > div, button {
-      border-radius: 4px;
-    }
+  .section {
+    &__wrapper {
+      & > div,
+      button {
+        border-radius: 4px;
+      }
 
-    &__buttons {
-      display: flex;
-      flex-direction: column;
-      & > button:nth-child(2) {
-        margin-top: 16px;
+      &__buttons {
+        display: flex;
+        flex-direction: column;
+        & > button:nth-child(2) {
+          margin-top: 16px;
+        }
       }
     }
   }
   .visual-box__image {
     border-radius: 4px;
+  }
+}
+
+@include xsm-v {
+  .section {
+    display: flex;
+    flex-direction: column;
+    &__wrapper {
+      &__buttons {
+        & button:first-child {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+  .visual-box {
+    padding-right: 0;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    &__image {
+      max-height: 100%;
+      width: auto;
+      max-width: 75%;
+      display: block;
+    }
+  }
+  .button__icon {
+    // left: 36%;
+    padding-right: 16px;
+    transform: unset;
+    position: unset;
+  }
+  .mode {
+    &-info {
+      & :not(:first-child) {
+        font-weight: 500;
+        // line-height: 2;
+      }
+      &__question {
+        display: block;
+        padding-top: 4px;
+      }
+    }
+    &__container--active {
+      min-height: 10rem;
+    }
+  }
+}
+
+@include xxsm-v {
+  .mode__container--active {
+    min-height: 11rem;
   }
 }

@@ -4,12 +4,28 @@
     @content;
   }
 }
+
+// XXSmall devices portrait
+@mixin xxsm-v {
+  @media (max-width: #{$breakpoint-xxs-max}) and (orientation: portrait) {
+    @content;
+  }
+}
+
 // XSmall devices
 @mixin xsm {
   @media (max-width: #{$breakpoint-xs-max}) {
     @content;
   }
 }
+
+// XSmall devices portrait
+@mixin xsm-v {
+  @media (max-width: #{$breakpoint-xs-max}) and (orientation: portrait) {
+    @content;
+  }
+}
+
 // Small devices
 @mixin sm {
   @media (max-width: #{$breakpoint-sm-max}) {
