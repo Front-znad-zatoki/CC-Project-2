@@ -122,13 +122,13 @@
   }
 
   &__answer {
-    margin: 1rem;
-    height: 2.5em;
-    justify-content: space-between;
+    // margin: 1rem;
+    // height: 2.5em;
+    // justify-content: space-between;
     font-weight: 400;
     background-color: $color-primary;
-    flex-grow: 1;
-    flex-basis: 40%;
+    // flex-grow: 1;
+    // flex-basis: 40%;
     &--success {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 30px #51fc00;
@@ -178,12 +178,13 @@
   display: flex;
   flex-flow: wrap;
   justify-content: center;
-  position: absolute;
+  // position: absolute;
   width: 100%;
   bottom: 2rem;
   left: 0;
-  padding: 0 90px 0 85px;
-
+  // padding: 0 90px 0 85px;
+  grid-column: 1/3;
+  padding-left: 10px;
   &__counter {
     @extend .text__lg;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
@@ -247,7 +248,7 @@
       & > div {
         border-radius: 8px;
       }
-      &__buttons > button {
+      &__buttons > button, .button__answer {
         border-radius: 8px;
       }
     }
@@ -344,7 +345,7 @@
   .section {
     &__wrapper {
       & > div,
-      button {
+      button, .button__answer {
         border-radius: 4px;
       }
 
