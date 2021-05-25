@@ -28,7 +28,7 @@ const createAnswerElement = (
     });
     setTimeout(
       () => humanPlayer.getAnswer(answerText, isCorrect, callback),
-      500,
+      1000,
     );
   });
   return answerElement;
@@ -46,7 +46,6 @@ const Answers = (answers, correctAnswer, humanPlayer, callback) => {
     const answerElement = createAnswerElement(
       answerText,
       isCorrect,
-      answersElement,
       humanPlayer,
       callback,
     );
