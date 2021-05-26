@@ -8,7 +8,7 @@
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
     &__buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -44,7 +44,7 @@
   border-radius: $border-radius;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     4px 4px 40px rgba(255, 0, 0, 0.9);
-    margin-bottom: 32px;
+    // margin-bottom: 32px;
   &__heading {
     @extend .text__lg--centered;
     margin: 0;
@@ -81,9 +81,12 @@
 .answers {
   display: grid;
   column-gap: 32px;
-  row-gap: 32px;
+  row-gap: 16px;
   grid-template-columns: 1fr 1fr;
+  // display: flex;
+  // flex-direction: column;
   margin-bottom: auto;
+  margin-top: 42px;
   &__text {
     position: relative;
     top: 50%;
@@ -102,7 +105,7 @@
   // Display & Box Model
   border-radius: $border-radius;
   border: 0;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 2em;
 
   // Color
@@ -114,8 +117,10 @@
   cursor: pointer;
   &:disabled {
     &:hover {
-      font-weight: unset;
-      box-shadow: none;
+      // font-weight: unset;
+      // box-shadow: none;
+      box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
+      cursor: not-allowed;
     }
   }
   &__app {
@@ -127,24 +132,25 @@
   }
 
   &__answer {
-    font-weight: 400;
+    // font-weight: 400;
     background-color: $color-primary;
-    height: 86px;
-    
+    min-height: 80px;
+    margin-bottom: 16px;
+box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
     &--success {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 30px #51fc00;
       background-color: $color-correct;
-      font-weight: 600;
+      // font-weight: 600;
     }
     &--fail {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 30px $color-fail;
       background-color: $color-fail;
-      font-weight: 600;
+      // font-weight: 600;
     }
     &--selected {
-      font-weight: 600;
+      // font-weight: 600;
     }
   }
   &__icon {
@@ -162,7 +168,7 @@
   }
 
   &:hover {
-    font-weight: 600;
+    // font-weight: 600;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
       inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
@@ -253,10 +259,13 @@
       &__buttons > button,
       .button__answer {
         border-radius: 8px;
+        // min-height: 62px;
       }
     }
   }
-
+  .button__answer {
+    min-height: 62px;
+  }
   .visual-box {
     // display: block;
     // flex-basis: 30%;
@@ -311,6 +320,12 @@
     box-shadow: 0px 2px 2px rgb(0 0 0 / 25%),
       2px 2px 20px rgb(255 0 0 / 90%);
   }
+  .remaining-time {
+    padding-left: 0;
+  }
+  .button__answer {
+    min-height: 52px;
+  }
 }
 
 @include sm {
@@ -337,6 +352,7 @@
   .visual-box {
     padding-right: 16px;
   }
+
 }
 
 @include xsm {
@@ -365,6 +381,15 @@
   .visual-box__image {
     border-radius: 4px;
   }
+  .answers {
+    display: flex;
+    flex-direction: column;
+    column-gap: unset;
+    row-gap: unset;
+  }
+  .button__answer {
+    min-height: 32px;
+  }
 }
 
 @include xsm-v {
@@ -387,18 +412,23 @@
     display: flex;
     justify-content: center;
     &__image {
-      max-height: 100%;
+      max-height: 200px;
       width: auto;
       max-width: 75%;
       display: block;
     }
   }
-  .button__icon {
+  .button {
+    &__icon {
     // left: 36%;
     padding-right: 16px;
     transform: unset;
     position: unset;
   }
+  &__answer{
+    margin-bottom: 8px;
+  }
+}
   .mode {
     &-info {
       & :not(:first-child) {
@@ -409,10 +439,16 @@
         display: block;
         padding-top: 4px;
       }
+      &__heading {
+        padding: 4px;
+      }
     }
     &__container--active {
       min-height: 10rem;
     }
+  }
+  .answers {
+    margin-top: 16px;
   }
 }
 
