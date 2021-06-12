@@ -12,27 +12,16 @@ body {
   background-size: cover;
 }
 
-// body > div {
-//   padding: 52px 85px 52px 90px;
-//   max-width: 1920px;
-//   margin: 0 auto;
-// }
-
 .app__box {
-  // margin: 0 0 40px;
   @include lg {
-    // margin: 0 0 20px;
   }
   @include sm {
-    // margin: 0 0 10px;
   }
 }
 
 .mode__container--active {
   @extend .app__box;
   overflow: auto;
-  // max-height: 350px;
-  // height: 100%;
   margin: 48px 0;
   padding: 0 48px 20px;
   border-radius: $border-radius;
@@ -65,16 +54,11 @@ body {
   padding: 0 32px;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   height: 100vh;
 }
 
 @include xlg {
   .text {
-    &__md,
-    &__lg {
-      // font-size: $font-size-secondary / 1.125;
-    }
   }
   .mode__container--active {
     padding: 0 32px 32px;
@@ -93,7 +77,6 @@ body {
   }
 
   .mode__container--active {
-    // height: 100%;
     padding: 0 32px 16px;
   }
 }
@@ -130,12 +113,6 @@ body {
 }
 
 @include xsm {
-  // body > div {
-  //   padding: 15px 10px 15px 10px;
-  // }
-  // #swquiz-app {
-  //   padding: 0 16px;
-  // }
   .text {
     &__md,
     &__lg {
