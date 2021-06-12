@@ -324,6 +324,18 @@
   }
 }
 
+@include md-h {
+  .visual-box__image {
+    max-height: 200px;
+    max-height: calc(100vh - 160px);
+  }
+  .answers {
+    margin-top: 16px;
+    column-gap: 16px;
+    row-gap: 0;
+  }
+}
+
 @include sm {
   .rules-header,
   .scores__header {
@@ -341,8 +353,10 @@
   .section {
     grid-template-columns: 32% 1fr;
     margin-bottom: 16px;
-    &__wrapper__buttons {
-      column-gap: 16px;
+    &__wrapper {
+      &__buttons {
+        column-gap: 16px;
+      }
     }
   }
   .visual-box {

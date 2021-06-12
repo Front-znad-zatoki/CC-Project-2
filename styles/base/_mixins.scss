@@ -26,9 +26,30 @@
   }
 }
 
+// XSmall devices landscape
+@mixin xsm-h {
+  @media (max-width: #{$breakpoint-xs-max}) and (orientation: landscape) {
+    @content;
+  }
+}
+
 // Small devices
 @mixin sm {
   @media (max-width: #{$breakpoint-sm-max}) {
+    @content;
+  }
+}
+
+// Small devices portrait
+@mixin sm-v {
+  @media (max-width: #{$breakpoint-sm-max}) and (orientation: portrait) {
+    @content;
+  }
+}
+
+// Small devices landscape
+@mixin sm-h {
+  @media (max-width: #{$breakpoint-sm-max}) and (orientation: landscape) {
     @content;
   }
 }
@@ -40,6 +61,12 @@
   }
 }
 
+// Medium devices landscape
+@mixin md-h {
+  @media (max-width: #{$breakpoint-md-max}) and (orientation: landscape) {
+    @content;
+  }
+}
 // Large devices
 @mixin lg {
   @media all and (max-width: #{$breakpoint-xl-max}) {
