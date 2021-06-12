@@ -15,6 +15,8 @@ Here's a link to the website, where you can check out our app: https://rednaxela
 
 Try it yourself and see how much you know about Star Wars Universum!
 
+Or check out the characters gallery by Weronika here before you start playing https://vieraboschkova.github.io/swapi-gallery/
+
 ---
   :computer: INFO for developers (installation and more) ➡️ https://github.com/Rednaxela700/CC-Project-2/wiki
   
