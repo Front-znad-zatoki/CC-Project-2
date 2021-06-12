@@ -184,8 +184,9 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
 
 .remaining-time {
   display: flex;
-  flex-flow: wrap;
+  flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-end;
   // position: absolute;
   width: 100%;
   bottom: 2rem;
@@ -198,6 +199,39 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
       4px 4px 40px rgba(255, 0, 0, 0.9);
     color: rgba(255, 0, 0, 0.8);
+  }
+}
+
+.lightsaber {
+  display: flex;
+  order: -1;
+  align-items: center;
+  flex-basis: 100%;
+
+  &__handle {
+    z-index: -1;
+    height: 50px;
+    width: 300px;
+    background: url('../static/assets/ui/LightsaberHandle.png')
+      no-repeat center;
+    transform: translateX(7%);
+    background-size: contain;
+  }
+
+  &__blade {
+    flex-basis: 100%;
+    height: 18px;
+    background-color: #bcbcbc;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: $border-radius / 2;
+
+    &--active {
+      height: inherit;
+      background: $color-primary;
+      box-shadow: 10px -5px 15px #ff0000, 10px 5px 15px #ff0000,
+        inset 0px 5px 4px rgba(255, 0, 0, 0.25);
+      border-radius: $border-radius / 2;
+    }
   }
 }
 
@@ -242,6 +276,7 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
 @include xlg {
   .section {
     grid-template-columns: 360px 1fr;
+    margin-bottom: 32px;
   }
   .mode-info__heading {
     padding: 16px;
@@ -274,6 +309,7 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
 
     &__image {
       border-radius: 8px;
+      max-height: 320px;
       // min-width: unset;
       // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
       //   drop-shadow(4px 4px 20px rgba(255, 0, 0, 0.9));
@@ -326,6 +362,10 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
   .button__answer {
     min-height: 52px;
   }
+  .lightsaber__handle {
+    margin-left: -16px;
+    height: 40px;
+  }
 }
 
 @include sm {
@@ -352,10 +392,24 @@ box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
   .visual-box {
     padding-right: 16px;
   }
-
+  .lightsaber {
+    &__handle {
+    display: none;
+  }
+  &__blade {
+    height: 12px;
+  }
+}
+  .remaining-time {
+    margin-top: 16px;
+    &__counter {
+      line-height: 2rem;
+    }
+  }
 }
 
 @include xsm {
+
   .button {
     // flex-basis: 100%;
     &--red {
