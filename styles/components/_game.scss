@@ -8,7 +8,6 @@
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     &__buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -44,7 +43,6 @@
   border-radius: $border-radius;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     4px 4px 40px rgba(255, 0, 0, 0.9);
-
   &__heading {
     @extend .text__lg--centered;
     margin: 0;
@@ -54,9 +52,6 @@
 
 .rules {
   @extend .mode__container--active;
-  // height: 100%;
-  // margin: 48px 0;
-  // display: none;
   &-header {
     @extend .text__lg--centered;
     font-weight: 500;
@@ -79,40 +74,38 @@
 }
 
 .answers {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.answer__text {
-  position: relative;
-  top: 50%;
-  transform: translate(0, -50%);
-  margin: 0;
-  padding: 0;
-  text-align: center;
+  display: grid;
+  column-gap: 32px;
+  row-gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: auto;
+  margin-top: 42px;
+  &__text {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
 }
 
 .button {
   @extend .text__lg--centered;
-  // Positioning
   position: relative;
-  flex-grow: 1;
-
-  // Display & Box Model
   border-radius: $border-radius;
   border: 0;
-  // padding: 1rem;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  // max-width: 400px;
   height: 2em;
-
-  // Color
   background-color: $color-primary;
   color: $text-color-primary;
-
-  // Other
   text-align: center;
   cursor: pointer;
+  &:disabled {
+    &:hover {
+      box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
+      cursor: not-allowed;
+    }
+  }
   &__app {
     @extend .button;
     &--start {
@@ -122,27 +115,19 @@
   }
 
   &__answer {
-    margin: 1rem;
-    height: 2.5em;
-    justify-content: space-between;
-    font-weight: 400;
     background-color: $color-primary;
-    flex-grow: 1;
-    flex-basis: 40%;
+    min-height: 80px;
+    margin-bottom: 16px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 30px #ff0000;
     &--success {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 30px #51fc00;
       background-color: $color-correct;
-      font-weight: 600;
     }
     &--fail {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 30px $color-fail;
       background-color: $color-fail;
-      font-weight: 600;
-    }
-    &--selected {
-      font-weight: 600;
     }
   }
   &__icon {
@@ -160,7 +145,6 @@
   }
 
   &:hover {
-    font-weight: 600;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
       inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
@@ -176,19 +160,52 @@
 
 .remaining-time {
   display: flex;
-  flex-flow: wrap;
+  flex-wrap: wrap;
   justify-content: center;
-  position: absolute;
+  align-content: flex-end;
   width: 100%;
   bottom: 2rem;
   left: 0;
-  padding: 0 90px 0 85px;
-
+  grid-column: 1/3;
+  padding-left: 10px;
   &__counter {
     @extend .text__lg;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
       4px 4px 40px rgba(255, 0, 0, 0.9);
     color: rgba(255, 0, 0, 0.8);
+  }
+}
+
+.lightsaber {
+  display: flex;
+  order: -1;
+  align-items: center;
+  flex-basis: 100%;
+
+  &__handle {
+    z-index: -1;
+    height: 50px;
+    width: 300px;
+    background: url('../static/assets/ui/LightsaberHandle.png')
+      no-repeat center;
+    transform: translateX(7%);
+    background-size: contain;
+  }
+
+  &__blade {
+    flex-basis: 100%;
+    height: 18px;
+    background-color: #bcbcbc;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: $border-radius / 2;
+
+    &--active {
+      height: inherit;
+      background: $color-primary;
+      box-shadow: 10px -5px 15px #ff0000, 10px 5px 15px #ff0000,
+        inset 0px 5px 4px rgba(255, 0, 0, 0.25);
+      border-radius: $border-radius / 2;
+    }
   }
 }
 
@@ -215,7 +232,6 @@
 
     &-cell {
       @extend .text__md;
-      // padding: 0 1.25rem;
       margin: 0;
       text-align: center;
       &:nth-of-type(3n + 1) {
@@ -233,6 +249,7 @@
 @include xlg {
   .section {
     grid-template-columns: 360px 1fr;
+    margin-bottom: 32px;
   }
   .mode-info__heading {
     padding: 16px;
@@ -240,39 +257,29 @@
 }
 @include lg {
   .section {
-    // flex-wrap: wrap;
     grid-template-columns: 320px 1fr;
     column-gap: 16px;
     &__wrapper {
       & > div {
         border-radius: 8px;
       }
-      &__buttons > button {
+      &__buttons > button,
+      .button__answer {
         border-radius: 8px;
       }
     }
   }
-
+  .button__answer {
+    min-height: 62px;
+  }
   .visual-box {
-    // display: block;
-    // flex-basis: 30%;
-    // padding: 0 30px 0 0;
-    // margin: auto 0;
-
     &__image {
       border-radius: 8px;
-      // min-width: unset;
-      // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-      //   drop-shadow(4px 4px 20px rgba(255, 0, 0, 0.9));
+      max-height: 320px;
     }
   }
-  // .mode-info {
-  //   border-radius: 8px;
-  // }
   .section__wrapper__buttons > .button {
-    // height: auto;
     &:first-child {
-      // margin: 0 20px 0 0;
     }
   }
 }
@@ -289,8 +296,6 @@
   }
 
   .visual-box {
-    // flex-basis: unset;
-    // margin: 0 auto;
     padding-left: 0;
     max-height: calc(100% - 32px);
     &__image {
@@ -306,6 +311,28 @@
   .section__wrapper__buttons .button {
     box-shadow: 0px 2px 2px rgb(0 0 0 / 25%),
       2px 2px 20px rgb(255 0 0 / 90%);
+  }
+  .remaining-time {
+    padding-left: 0;
+  }
+  .button__answer {
+    min-height: 52px;
+  }
+  .lightsaber__handle {
+    margin-left: -16px;
+    height: 40px;
+  }
+}
+
+@include md-h {
+  .visual-box__image {
+    max-height: 200px;
+    max-height: calc(100vh - 160px);
+  }
+  .answers {
+    margin-top: 16px;
+    column-gap: 16px;
+    row-gap: 0;
   }
 }
 
@@ -326,25 +353,37 @@
   .section {
     grid-template-columns: 32% 1fr;
     margin-bottom: 16px;
-    &__wrapper__buttons {
-      column-gap: 16px;
+    &__wrapper {
+      &__buttons {
+        column-gap: 16px;
+      }
     }
   }
   .visual-box {
     padding-right: 16px;
   }
+  .lightsaber {
+    &__handle {
+      display: none;
+    }
+    &__blade {
+      height: 12px;
+    }
+  }
+  .remaining-time {
+    margin-top: 16px;
+    &__counter {
+      line-height: 2rem;
+    }
+  }
 }
 
 @include xsm {
-  .button {
-    // flex-basis: 100%;
-    &--red {
-    }
-  }
   .section {
     &__wrapper {
       & > div,
-      button {
+      button,
+      .button__answer {
         border-radius: 4px;
       }
 
@@ -359,6 +398,15 @@
   }
   .visual-box__image {
     border-radius: 4px;
+  }
+  .answers {
+    display: flex;
+    flex-direction: column;
+    column-gap: unset;
+    row-gap: unset;
+  }
+  .button__answer {
+    min-height: 32px;
   }
 }
 
@@ -382,32 +430,41 @@
     display: flex;
     justify-content: center;
     &__image {
-      max-height: 100%;
+      max-height: 200px;
       width: auto;
       max-width: 75%;
       display: block;
     }
   }
-  .button__icon {
-    // left: 36%;
-    padding-right: 16px;
-    transform: unset;
-    position: unset;
+  .button {
+    &__icon {
+      padding-right: 16px;
+      transform: unset;
+      position: unset;
+    }
+    &__answer {
+      margin-bottom: 8px;
+    }
   }
   .mode {
     &-info {
       & :not(:first-child) {
         font-weight: 500;
-        // line-height: 2;
       }
       &__question {
         display: block;
         padding-top: 4px;
       }
+      &__heading {
+        padding: 4px;
+      }
     }
     &__container--active {
       min-height: 10rem;
     }
+  }
+  .answers {
+    margin-top: 16px;
   }
 }
 
