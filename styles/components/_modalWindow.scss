@@ -1,31 +1,24 @@
-//MODAL
 .modal {
-  // Positioning /
   position: absolute;
   left: 0;
   top: 0;
   z-index: 1;
-  // Display & Box Model /
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  // Color /
   background-color: rgba(0, 0, 0, 0.8);
   &__container {
-    // Display & Box Model /
-    height: 889px;
+    max-height: calc(100vh - 64px);
     max-width: 1200px;
     border-radius: $border-radius;
     padding: 48px 64px;
     display: flex;
     flex-direction: column;
-    // Color /
     background: $color-primary;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
       4px 4px 40px rgba(255, 0, 0, 0.9);
-    // Text /
     text-align: left;
   }
   &__heading {
@@ -43,14 +36,11 @@
 }
 
 .details {
-  margin-left: 285px;
-  height: 355px;
-  padding-top: 12px;
+  margin-left: 320px;
   position: relative;
   z-index: 2;
   &__heading {
-    margin-bottom: 4px;
-    margin-left: 50px;
+    margin: 0 0 4px 50px;
     @extend .text__lg;
     font-size: 1.625rem; //can't devide $font-size-* in to a pretty nr
   }
@@ -116,20 +106,21 @@
 
 .player-form {
   display: flex;
-  padding: 32px 0;
+  padding: 16px 0;
   &__image {
     position: absolute;
-    top: -322px;
+    top: -300px;
     left: 12px;
     z-index: 1;
-    height: 322px;
+    height: 300px;
   }
   &__item {
     position: relative;
     display: inline-block;
   }
   &__input {
-    height: 80px;
+    height: 64px;
+    width: 340px;
     padding-left: 24px;
     border: 4px solid #c4c4c4;
     border-radius: 8px;
@@ -147,15 +138,16 @@
   }
   &__button {
     // @extend .text__md; -> Gets overwritten by main button class
-    margin-top: 40px;
+    margin-top: 16px;
     max-width: unset;
-    width: 700px;
+    width: 50%;
     height: unset;
     align-self: center;
     font-weight: 500;
     font-size: $font-size-secondary;
-    line-height: 123%;
+    line-height: 2;
     flex-grow: unset;
+    border-radius: 8px;
   }
 }
 
@@ -261,23 +253,16 @@
 @include lg {
   .details {
     height: calc(100% - 18rem);
+    &__heading {
+      margin-top: 0;
+    }
     &__table {
       &__head {
         font-size: 1.125rem;
       }
-      &__answer,
-      &__answer--correct,
-      &__answer--incorrect {
-        font-size: $font-size-secondary / 2;
-      }
       &__image {
         min-width: 100px;
       }
-    }
-  }
-  .player-form {
-    &__label {
-      font-size: $font-size-secondary / 1.8;
     }
   }
 }
@@ -290,12 +275,12 @@
       width: calc(100% - 120px);
     }
     &__text {
-      font-size: $font-size-secondary / 1.8;
+      font-size: $font-size-secondary / 1.5;
     }
   }
   .details {
-    &__heading {
-      font-size: $font-size-secondary / 1.8;
+    &__table {
+      height: calc(100% - 32px);
     }
     &__table {
       & td,
@@ -307,11 +292,18 @@
   .player-form {
     &__label,
     &__input {
-      font-size: $font-size-secondary / 2.25;
+      font-size: $font-size-secondary / 1.5;
+    }
+    &__input {
+      height: 36px;
     }
     &__image {
       height: 160px;
       top: -160px;
+    }
+    &__button {
+      font-size: $font-size-secondary / 1.5;
+      line-height: 2;
     }
   }
 }
@@ -319,13 +311,22 @@
 @include sm {
   .modal {
     &__container {
-      height: calc(100% - 80px);
       max-width: unset;
-      width: calc(100% - 80px);
+      max-height: unset;
+      height: 100%;
+      width: 100%;
+      border-radius: 0;
+      padding: 24px;
+    }
+    &__text {
+      padding-top: 16px;
     }
   }
   .details {
     margin-left: 0;
+    margin-top: 16px;
+    max-height: calc(100% - 16rem);
+    height: unset;
     &__table {
       transform: translate(-16px);
       width: calc(100% + 16px);
@@ -334,11 +335,6 @@
         text-align: left;
         padding-left: 16px;
       }
-      &__answer,
-      &__answer--correct,
-      &__answer--incorrect {
-        font-size: $font-size-secondary / 2.25;
-      }
     }
     &__heading {
       padding-left: 0;
@@ -346,6 +342,7 @@
   }
   .player-form {
     flex-wrap: wrap-reverse;
+    margin-top: auto;
     &__label,
     &__input {
       flex-basis: 100%;
@@ -363,26 +360,53 @@
     }
   }
 }
+@include sm-h {
+  .player-form {
+    flex-basis: 49%;
+    &__button {
+      flex-basis: 49%;
+      margin-top: auto;
+      border: 1px solid red;
+      padding: 4px;
+    }
+  }
+  .details {
+    min-height: unset;
+    max-height: calc(100% - 8.5rem);
+    margin-top: 0px;
+    &__table {
+      height: 100%;
+      &__head {
+        font-size: $font-size-secondary / 1.5;
+      }
+    }
+    &__heading {
+      display: none;
+    }
+  }
+  .modal {
+    &__text {
+      padding-top: 0;
+    }
+    &__heading {
+      flex-basis: 100%;
+    }
+    &__container {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}
 
 @include xsm {
   .modal {
     &__heading {
       padding-bottom: 0.25rem;
     }
-    &__container {
-      height: calc(100% - 48px);
-      max-width: unset;
-      width: calc(100% - 48px);
-      padding: 24px;
-    }
-    &__text {
-      font-size: $font-size-secondary / 2.25;
-    }
   }
   .details {
     &__heading {
       text-align: left;
-      font-size: $font-size-secondary / 1.8;
     }
   }
   .player-form {
@@ -390,8 +414,8 @@
       height: 43px;
     }
     &__button {
-      font-size: $font-size-secondary / 1.8;
       padding: 8px;
+      line-height: 123%;
     }
     &__image {
       display: none;
