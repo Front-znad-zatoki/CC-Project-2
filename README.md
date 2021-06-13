@@ -7,7 +7,15 @@
 
 This is a Star Wars quiz application. From us. For you. For fun.
 
-Version 1.0
+Version 2.0 - in progress
+---
+
+- [x] Responsiveness
+- [x] Refactor answers component
+- [ ] Refactor remaining time counter
+- [ ] Add loader
+
+Version 1.0 - App created during the CodersCamp
 ---
 Hi there, We are The Front Znad Zatoki Gdańsk! 👋
 
